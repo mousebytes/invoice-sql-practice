@@ -1,0 +1,37 @@
+USE [InvoiceApp]
+GO
+
+CREATE TABLE Tenants
+(
+    PK_Tenant INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+    TenantName VARCHAR(100) NOT NULL
+)
+
+CREATE TABLE Customers
+(
+    PK_Customer INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+    Tenant_PK INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Tenants](PK_Tenant),
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Street VARCHAR(100) NOT NULL,
+    City VARCHAR(100) NOT NULL,
+    [State] VARCHAR(2) NOT NULL
+)
+
+CREATE TABLE Invoices
+(
+    PK_Invoice INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+    Customer_PK INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Customers](PK_Customer),
+    DateCreated DATETIME2(3) NOT NULL,
+    DatePaid DATETIME2(3) NULL,
+    AmountPaid MONEY NOT NULL
+)
+
+CREATE TABLE InvoiceItems
+(
+    PK_InvoiceItem INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+    Invoice_PK INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Invoices](PK_Invoice),
+    [Name] VARCHAR(255) NOT NULL,
+    UnitPrice MONEY NOT NULL,
+    Quantity INT NOT NULL
+)
