@@ -4,11 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+RepoSetup.RegisterDI(builder);
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
-RepoSetup.RegisterDI(builder);
 
 var app = builder.Build();
 
