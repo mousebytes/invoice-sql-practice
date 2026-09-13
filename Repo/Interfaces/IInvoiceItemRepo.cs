@@ -3,9 +3,9 @@ using Models.ViewModels;
 
 public interface IInvoiceItemRepo
 {
-    public InvoiceItemView Add(int PK);
-    public InvoiceItemView Get(int PK);
-    public List<InvoiceItemView> GetAll();
-    public InvoiceItemView Update(int PK, InvoiceItem model);
-    public bool Delete(int PK);
+    public InvoiceItemView AddAsync(InvoiceItem model);
+    public InvoiceItemView GetAsync(int PK);
+    public List<InvoiceItemView> GetAllAsync();
+    public InvoiceItemView UpdateAsync(int PK, InvoiceItem model);
+    public bool DeleteAsync(int PK);
 }

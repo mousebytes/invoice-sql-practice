@@ -1,6 +1,4 @@
-using Models;
 using Repo;
-using WebAPI.Controllers;
 
 namespace WebAPI;
 public static class RepoSetup

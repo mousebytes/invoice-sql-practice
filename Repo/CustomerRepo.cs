@@ -4,7 +4,7 @@ namespace Repo;
 public class CustomerRepo : BaseRepo, ICustomerRepo
 {
     public CustomerRepo(string connectionString) : base(connectionString) {}
-    public Customer Add(int PK)
+    public Customer Add(Customer model)
     {
         throw new NotImplementedException();
     }

@@ -5,7 +5,7 @@ namespace Repo;
 public class InvoiceItemRepo : BaseRepo, IInvoiceItemRepo
 {
     public InvoiceItemRepo(string connectionString) : base(connectionString) {}
-    public InvoiceItemView Add(int PK)
+    public InvoiceItemView Add(InvoiceItem model)
     {
         throw new NotImplementedException();
     }

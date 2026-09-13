@@ -2,9 +2,9 @@ using Models;
 
 public interface ITenantRepo
 {
-    public Tenant Add(int PK);
-    public Tenant Get(int PK);
-    public List<Tenant> GetAll();
-    public Tenant Update(int PK, Tenant model);
-    public bool Delete(int PK);
+    public Task<Tenant> AddAsync(Tenant model);
+    public Task<Tenant> GetAsync(int PK);
+    public Task<IEnumerable<Tenant>> GetAllAsync();
+    public Task<Tenant> UpdateAsync(int PK, Tenant model);
+    public Task<bool> DeleteAsync(int PK);
 }

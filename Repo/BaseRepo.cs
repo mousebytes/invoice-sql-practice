@@ -1,17 +1,16 @@
 using System.Data;
 using Microsoft.Data.SqlClient;
+using Repo.Context;
 
 namespace Repo;
 public abstract class BaseRepo
 {
-    private string _connection;
-    public BaseRepo(string connectionString)
+    protected readonly IDbContext Context;
+    public BaseRepo(IDbContext context)
     {
-        _connection = connectionString;
+        Context = context;
     }
 
-    protected IDbConnection CreateConnection()
-    {
-        return new SqlConnection(_connection);
-    }
+    protected IDbConnection Connection => Context.GetConnection();
+    protected IDbTransaction? Transaction => Context.GetTransaction();
 }
