@@ -1,4 +1,12 @@
 :root
 {
     --app-background-color: #222222;
+    --app-background-alt-color: #444444;
+    --color-on-background: #FFFFFF;
+}
+
+body
+{
+    background-color: var(--app-background-color);
+    color: var(--color-on-background);
 }

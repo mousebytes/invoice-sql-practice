@@ -1,6 +1,26 @@
 ﻿@using InvoiceApp.PageComponents
 @inherits LayoutComponentBase
 
-@Body
+<div class="layout-container">
+    <div class="layout-sidebar">
+        <SideBar />
+    </div>
+    <div class="layout-main-content">
+        @Body
+    </div>
+</div>
 
-<SideBar />
+<style>
+    .layout-container
+    {
+        display: flex;
+    }
+    .layout-main-content
+    {
+
+    }
+    .layout-sidebar
+    {
+        width: 400px;
+    }
+</style>
