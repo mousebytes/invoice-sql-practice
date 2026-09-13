@@ -9,9 +9,9 @@ public class InvoiceItem
     [Required]
     public int Invoice_PK {get; set;}
     [Required][MaxLength(255)]
-    public string Name {get; set;}
+    public string Name {get; set;} = "";
     [Required][MaxLength(500)]
-    public string Description {get; set;}
+    public string Description {get; set;} = "";
     [Required]
     public SqlMoney UnitPrice {get; set;}
     [Required]
