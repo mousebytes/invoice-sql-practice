@@ -24,25 +24,25 @@ public class TenantRepo : BaseRepo, ITenantRepo
         return result;
     }
 
-    public async Task<Tenant> GetAsync(int PK)
+    public async Task<Tenant?> GetAsync(int PK)
     {
         string procedure = _DatabaseAndSchema + "spTenant_Get";
         var parameters = new {PK_Tenant = PK};
-        Tenant result = await Connection.QuerySingleAsync<Tenant>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
+        Tenant? result = await Connection.QuerySingleOrDefaultAsync<Tenant>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
         return result;
     }
 
     public async Task<IEnumerable<Tenant>> GetAllAsync()
     {
-        string procedure = _DatabaseAndSchema + "spTenant_Get";
+        string procedure = _DatabaseAndSchema + "spTenant_GetAll";
         var parameters = new {};
-        IEnumerable<Tenant> result = await Connection.QueryAsync<Tenant>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
+        IEnumerable<Tenant>? result = await Connection.QueryAsync<Tenant>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
         return result;
     }
 
-    public async Task<Tenant> UpdateAsync(int PK, Tenant model)
+    public async Task<Tenant> UpdateAsync(Tenant model)
     {
-        string procedure = _DatabaseAndSchema + "spTenant_Get";
+        string procedure = _DatabaseAndSchema + "spTenant_Update";
         var parameters = model;
         Tenant result = await Connection.QuerySingleAsync<Tenant>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
         return result;

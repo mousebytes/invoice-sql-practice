@@ -1,32 +1,51 @@
+using Dapper;
 using Models;
 using Models.ViewModels;
+using Repo.Context;
 namespace Repo;
 
 public class InvoiceItemRepo : BaseRepo, IInvoiceItemRepo
 {
-    public InvoiceItemRepo(string connectionString) : base(connectionString) {}
-    public InvoiceItemView Add(InvoiceItem model)
+    private const string _DatabaseAndSchema = "[InvoiceApp].[dbo].";
+    public InvoiceItemRepo(IDbContext context) : base(context) {}
+
+    public async Task<InvoiceItemView> AddAsync(InvoiceItem model)
     {
-        throw new NotImplementedException();
+        string procedure = _DatabaseAndSchema + "spInvoiceItem_Add";
+        var parameters = model;
+        InvoiceItemView result = await Connection.QuerySingleAsync<InvoiceItemView>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
+        return result;
     }
 
-    public bool Delete(int PK)
+    public async Task<bool> DeleteAsync(int PK)
     {
-        throw new NotImplementedException();
+        string procedure = _DatabaseAndSchema + "spInvoiceItem_Delete";
+        var parameters = new {PK_InvoiceItemView = PK};
+        bool result = await Connection.QuerySingleAsync<bool>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
+        return result;
     }
 
-    public InvoiceItemView Get(int PK)
+    public async Task<InvoiceItemView?> GetAsync(int PK)
     {
-        throw new NotImplementedException();
+        string procedure = _DatabaseAndSchema + "spInvoiceItem_Get";
+        var parameters = new {PK_InvoiceItemView = PK};
+        InvoiceItemView? result = await Connection.QuerySingleOrDefaultAsync<InvoiceItemView>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
+        return result;
     }
 
-    public List<InvoiceItemView> GetAll()
+    public async Task<IEnumerable<InvoiceItemView>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        string procedure = _DatabaseAndSchema + "spInvoiceItem_GetAll";
+        var parameters = new {};
+        IEnumerable<InvoiceItemView>? result = await Connection.QueryAsync<InvoiceItemView>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
+        return result;
     }
 
-    public InvoiceItemView Update(int PK, InvoiceItem model)
+    public async Task<InvoiceItemView> UpdateAsync(InvoiceItem model)
     {
-        throw new NotImplementedException();
+        string procedure = _DatabaseAndSchema + "spInvoiceItem_Update";
+        var parameters = model;
+        InvoiceItemView result = await Connection.QuerySingleAsync<InvoiceItemView>(procedure, parameters, Transaction, commandType: System.Data.CommandType.StoredProcedure);
+        return result;
     }
 }

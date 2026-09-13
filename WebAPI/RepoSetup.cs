@@ -1,4 +1,5 @@
 using Repo;
+using Repo.Context;
 
 namespace WebAPI;
 public static class RepoSetup
@@ -11,9 +12,10 @@ public static class RepoSetup
     private static void InjectRepos(WebApplicationBuilder builder)
     {
         string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
-        builder.Services.AddScoped<TenantRepo>(sp => new TenantRepo(connectionString));
-        builder.Services.AddScoped<CustomerRepo>(sp => new CustomerRepo(connectionString));
-        builder.Services.AddScoped<InvoiceRepo>(sp => new InvoiceRepo(connectionString));
-        builder.Services.AddScoped<InvoiceItemRepo>(sp => new InvoiceItemRepo(connectionString));
+        builder.Services.AddScoped<IDbContext>(sp => new RepoContext(connectionString));
+        builder.Services.AddScoped<TenantRepo>();
+        builder.Services.AddScoped<CustomerRepo>();
+        builder.Services.AddScoped<InvoiceRepo>();
+        builder.Services.AddScoped<InvoiceItemRepo>();
     }
 }

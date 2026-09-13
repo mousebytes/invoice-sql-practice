@@ -3,9 +3,9 @@ using Models.ViewModels;
 
 public interface IInvoiceItemRepo
 {
-    public InvoiceItemView AddAsync(InvoiceItem model);
-    public InvoiceItemView GetAsync(int PK);
-    public List<InvoiceItemView> GetAllAsync();
-    public InvoiceItemView UpdateAsync(int PK, InvoiceItem model);
-    public bool DeleteAsync(int PK);
+    public Task<InvoiceItemView> AddAsync(InvoiceItem model);
+    public Task<InvoiceItemView?> GetAsync(int PK);
+    public Task<IEnumerable<InvoiceItemView>> GetAllAsync();
+    public Task<InvoiceItemView> UpdateAsync(InvoiceItem model);
+    public Task<bool> DeleteAsync(int PK);
 }

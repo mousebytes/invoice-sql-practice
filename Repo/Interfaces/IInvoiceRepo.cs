@@ -2,9 +2,9 @@ using Models;
 
 public interface IInvoiceRepo
 {
-    public Invoice AddAsync(Invoice model);
-    public Invoice GetAsync(int PK);
-    public List<Invoice> GetAllAsync();
-    public Invoice UpdateAsync(int PK, Invoice model);
-    public bool DeleteAsync(int PK);
+    public Task<Invoice> AddAsync(Invoice model);
+    public Task<Invoice?> GetAsync(int PK);
+    public Task<IEnumerable<Invoice>> GetAllAsync();
+    public Task<Invoice> UpdateAsync(Invoice model);
+    public Task<bool> DeleteAsync(int PK);
 }
