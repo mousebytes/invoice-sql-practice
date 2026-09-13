@@ -6,13 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <!--References n shiz-->
   <ItemGroup>
     <ProjectReference Include="../Models/Models.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.1.86" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.3" />
-  </ItemGroup>
-  
 </Project>
