@@ -16,7 +16,7 @@ public class RepoContext : IDbContext, IDisposable
 
     public IDbConnection GetConnection()
     {
-        if(_connectionString == null)
+        if(_connection == null)
         {
             _connection = new SqlConnection(_connectionString);
         }

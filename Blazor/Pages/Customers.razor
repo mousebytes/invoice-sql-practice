@@ -1,0 +1,14 @@
+@page "/customers"
+@namespace Blazor.Pages
+
+@inject ICustomerClientAPI _apiClient
+
+<p>hello</p>
+
+@if(_customers.Any())
+{
+    @foreach(var c in _customers)
+    {
+        <p>c.FirstName</p>
+    }
+}

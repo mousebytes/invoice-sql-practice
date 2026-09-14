@@ -9,4 +9,12 @@ body
 {
     background-color: var(--app-background-color);
     color: var(--color-on-background);
+    padding: 0px;
+    margin: 0px;
+}
+
+html
+{
+    padding: 0px;
+    margin: 0px;
 }

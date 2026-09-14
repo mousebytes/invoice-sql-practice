@@ -13,9 +13,9 @@ public static class RepoSetup
     {
         string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
         builder.Services.AddScoped<IDbContext>(sp => new RepoContext(connectionString));
-        builder.Services.AddScoped<TenantRepo>();
-        builder.Services.AddScoped<CustomerRepo>();
-        builder.Services.AddScoped<InvoiceRepo>();
-        builder.Services.AddScoped<InvoiceItemRepo>();
+        builder.Services.AddScoped<ITenantRepo, TenantRepo>();
+        builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
+        builder.Services.AddScoped<IInvoiceRepo, InvoiceRepo>();
+        builder.Services.AddScoped<IInvoiceItemRepo, InvoiceItemRepo>();
     }
 }

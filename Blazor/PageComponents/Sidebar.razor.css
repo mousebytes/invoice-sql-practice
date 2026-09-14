@@ -1,0 +1,25 @@
+.sidebar-container
+{
+    background-color: var(--app-background-alt-color);
+    color: var(--color-on-background);
+    height: 100%;
+    overflow: hidden;
+    transition: width 0.2s ease-out;
+}
+
+.sidebar-container-collapsed
+{
+    width: 100px;
+}
+
+.sidebar-container-open
+{
+    width: 300px;
+}
+
+.collapse-button-container
+{
+    text-align: right;
+    padding-top: 15px;
+    padding-right: 15px;
+}

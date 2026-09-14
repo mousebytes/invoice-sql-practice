@@ -1,10 +1,9 @@
-﻿@using InvoiceApp.PageComponents
+﻿@using Blazor.PageComponents
 @inherits LayoutComponentBase
 
 <div class="layout-container">
-    <div class="layout-sidebar">
-        <SideBar />
-    </div>
+    <SideBar />
+    
     <div class="layout-main-content">
         @Body
     </div>
@@ -14,6 +13,7 @@
     .layout-container
     {
         display: flex;
+        height: 100vh;
     }
     .layout-main-content
     {

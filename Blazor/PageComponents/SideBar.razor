@@ -1,12 +1,13 @@
-<div class="sidebar-container">
-    <p>waddup homeboy</p>
-</div>
+@namespace Blazor.PageComponents
 
-<style>
-    .sidebar-container
-    {
-        background-color: var(--app-background-color);
-        color: var(--color-on-background)
-    }
+@inject NavigationManager _navMan
 
-</style>
+    <div class="@GetClass()">
+        <div class="collapse-button-container">
+            <button @onclick="ToggleSidebar">Collapse</button>
+        </div>
+        <div class="navigation-buttons">
+            <button @onclick="@(() => NavigateTo("customers"))">Customers</button>
+        </div>
+        <p>waddup homeboy</p>
+    </div>
