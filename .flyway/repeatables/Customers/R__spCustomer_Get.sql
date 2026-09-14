@@ -1,0 +1,17 @@
+USE [InvoiceApp]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET NOCOUNT ON
+GO
+
+CREATE OR ALTER PROCEDURE spCustomer_Get
+(
+    @PK AS INT
+)
+AS
+    SELECT * FROM [dbo].[Customers] WHERE [PK_Customer] = @PK
+GO
